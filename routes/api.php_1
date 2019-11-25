@@ -1,0 +1,209 @@
+<?php
+use Anomaly\ApiModule\ApiModuleServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+
+function set_token(){
+	
+	$token = "1234567";
+	//setup the request, you can also use CURLOPT_URL
+	$ch = curl_init(url()->full());
+
+	// Returns the data/output as a string instead of raw data
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	//Set your auth headers
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+	'Content-Type: application/json',
+	'Authorization: Bearer ' . $token
+	));
+
+	// get stringified data/output. See CURLOPT_RETURNTRANSFER
+	$data = curl_exec($ch);
+
+	// get info about the request
+	$info = curl_getinfo($ch);
+	// close curl resource to free up system resources
+	curl_close($ch);
+	
+	
+}
+
+
+Route::get('/terumbu_karang', function() {
+	//dd(set_token());
+	
+	$year = $_GET['year'];
+	$page = $_GET['page'];
+	$size = $_GET['size'];
+
+	
+	(int)$sizex = !$size ? 5 : $size;
+	(int)$pagex = !$page ? 0 : (int)($page-1)*(int)$sizex;
+	
+	
+	$all_data = DB::table('terumbukarang')->get();
+	$c_data = count($all_data);
+	
+	$data = DB::table('terumbukarang')
+	->where('year',$year)
+	->orderBy('id','desc')
+                ->offset($pagex)
+                ->limit($sizex)
+				->get();
+	$data_thn = DB::table('terumbukarang')
+					->where('year',$year)
+					->get();
+					
+	if(count($data_thn)>0){
+		$total = count($data_thn);
+	}else{
+		$total = 0 ;
+	}	
+		
+	if(count($data) > 0){
+		
+		(int)$pagenext = !(int)$page ? 0 : (int)($page)*(int)$sizex;
+		$datanext = DB::table('terumbukarang')
+				->where('year',$year)
+				->orderBy('id','desc')
+							->offset($pagenext)
+							->limit($sizex)
+							->get();		
+		
+		if(count($datanext) <= 0){
+			$next_page = 'no';
+		}else{
+			$next_page = 'yes';
+		}
+		
+		$data = json_decode(strtolower(json_encode($data)));
+		$result = array(
+			"data" => $data,
+			"error" => '',
+			"cursorInfo" => array(
+				"year" => (int)$year,
+				"page"=> (int)$page,
+				"size"=> (int)$size,
+				"totalData"=> (int)$total,
+				"hasMore"=> $next_page
+			)
+		);
+		
+	}else{
+		
+		$data = DB::table('terumbukarang')
+					->where('year',$year)
+					->get();
+		if(count($data)>0){
+			$total = count($data);
+		}else{
+			$total = 0 ;
+		}			
+		
+		$result = array(
+			"data" => array(),
+			"error" => 'data not found',
+			"cursorInfo" => array(
+				"year" => (int)$year,
+				"page"=> (int)$page,
+				"size"=> (int)$size,
+				"totalData"=> (int)$total,
+				"hasMore"=> 'no'
+			)
+		);
+	}
+	
+	return response()->json($result, 200);
+	
+	
+	
+});
+
+Route::get('/terumbu_karang_prop/{propinsi}/{year}/{page}/{size}', function($propinsi,$year, $page, $size) {
+	
+	(int)$size = !$size ? 5 : $size;
+	(int)$page = !(int)$page ? 0 : (int)($page-1)*(int)$size;
+	
+	$data = DB::table('terumbukarang')
+	->where('year',$year)
+	->where('provinsi',$propinsi)
+	->orderBy('id','desc')
+                ->offset($page)
+                ->limit($size)
+				->get();
+	return $data;
+	
+	
+});
+
+Route::get('/terumbu_karang_kab/{kabupaten}/{year}/{page}/{size}', function($kabupaten,$year, $page, $size) {
+	
+	(int)$size = !$size ? 5 : $size;
+	(int)$page = !(int)$page ? 0 : (int)($page-1)*(int)$size;
+	
+	$data = DB::table('terumbukarang')
+	->where('year',$year)
+	->where('kabupaten',$kabupaten)
+	->orderBy('id','desc')
+                ->offset($page)
+                ->limit($size)
+				->get();
+	return $data;
+	
+	
+});
+
+Route::get('/mangrove/{year}/{page}/{size}', function($year, $page, $size) {
+	
+	(int)$size = !$size ? 5 : $size;
+	(int)$page = !(int)$page ? 0 : (int)($page-1)*(int)$size;
+	
+	$data = DB::table('data_mangrove')
+	->where('year',$year)
+	->orderBy('id','desc')
+                ->offset($page)
+                ->limit($size)
+				->get();
+	return $data;
+	
+	
+});
+
+
+Route::get('/lamun/{year}/{page}/{size}', function($year, $page, $size) {
+	
+	(int)$size = !$size ? 5 : $size;
+	(int)$page = !(int)$page ? 0 : (int)($page-1)*(int)$size;
+	
+	$data = DB::table('data_lamun')
+	->where('year',$year)
+	->orderBy('id','desc')
+                ->offset($page)
+                ->limit($size)
+				->get();
+	return $data;
+	
+	
+});

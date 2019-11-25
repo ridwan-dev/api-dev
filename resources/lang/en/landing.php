@@ -1,0 +1,60 @@
+<?php
+return [
+  "welcome" => "Welcome to ",
+  "description" => "Please choose your needs, GIS for Geospatial Information and Repository for Data Documents.",
+   "login"=>"Login",
+   "logout"=>"Logout",
+   "data" => [
+      "year"=>"Year",
+      "total"=>"Total",
+      "type_publish"=>"Type",
+      "register"=>"Register",
+      "name"=>"Name",
+      "title"=>"Title",
+      "download"=>"Download",
+      "uploaded_date"=>"Uploaded date",
+      "publisher"=>"Publisher",
+      "search"=>"Search",
+      // map 
+      "bad"=>"Bad",
+      "broken"=>"Broken",
+      "enough"=>"Enough",
+      "good"=>"Good",
+      "very_good"=>"Very Good",
+      "poor"=>"Poor",
+      "healthy"=>"Good",
+      "unwell"=>"Moderate",
+      "normal"=>"Normal",
+      "cover"=>"Cover",
+      "density"=>"Density",
+      "tree"=>"Tree",
+      "and"=>"and",
+      "table"=>"Table",
+      "coral"=>"Coral",
+      "seagrass"=>"Seagrass",
+      "mangrove"=>"Mangrove",
+      "choose"=>"Choose",
+      "ecosystem"=>"Ecosystem",
+      "province"=>"Province",
+      "city"=>"City",
+      "show"=>"Show",
+      // coral detail
+      "coral_ecosystem_condition"=>"Condition of Coral Reef Ecosystem",
+      "choose_parameter"=>"Please choose the parameters first",
+      "avg_graphic_comparison"=>"Average of Graphic Comparison",
+      "hc_dc_comparison"=>"Comparison of HC, DC and DCA Condition",
+      // params
+      "coral_bad"=>"Bad (0-24.99% cover of coral)",
+      "coral_enough"=>"Enough (25-49.99% cover of coral)",
+      "coral_good"=>"Good (50-74.99% cover of coral)",
+      "coral_very_good"=>"Very Good (75-100% cover of coral)",
+      "seagrass_poor"=>"Poor (cover < 29.9)",
+      "seagrass_unwell"=>"Moderate (29.9% < cover < 60%)",
+      "seagrass_healthy"=>"Good (cover >= 60)",
+      "mangrove_broken"=>"Poor (cover < 50 and Density < 1000)",
+      "mangrove_normal"=>"Moderate (50 >= cover < 75%)",
+      "mangrove_good"=>"Good (cover >= 75 and Density >= 1500)"
+   ]
+];
+
+?>

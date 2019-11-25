@@ -1,0 +1,257 @@
+body {
+    color: #fff;
+}
+
+div.fill {
+    color: #000;
+    height: 100%;
+    width: 100%;
+}
+
+div.footer {
+    background: #1F2224 !important;
+    color: #d1d1d1;
+    font-size: 12px;
+    padding: 15px 0;
+}
+
+nav.navbar {
+    background: #1F2224;
+    border-bottom: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+
+p.coralInfo {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p.ket {
+    color: #ccc;
+    font-size: 12px;
+}
+
+span.coralHard {
+    color: #FFF;
+}
+
+span.coralDead {
+    color: #0390CF;
+}
+
+span.coralAlgae {
+    color: #FFEB00;
+}
+
+span.rank1 {
+    color: #DE4C4F;
+}
+
+span.rank2 {
+    color: #D8854F;
+}
+
+span.rank3 {
+    color: #EEA638;
+}
+
+span.rank4 {
+    color: #A7A737;
+}
+
+td.black {
+    font-weight: bold;
+}
+
+#chartcoral {
+    height: 450px;
+    width: 100%;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 450px;
+}
+
+#chartpie {
+    height: 180px;
+    width: 100%;
+}
+
+#chartren {
+    height: 450px;
+    width: 100%;
+}
+
+#legendMap {
+    background: #fff;
+    padding: 7px 15px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+#map {
+    height: 400px;
+}
+
+.amcharts-export-menu-top-right {
+    top: 10px;
+    right: 0;
+}
+
+.containerChart {
+    background-color: #273238;
+    padding: 15px;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.panel {
+    border-radius: 0;
+}
+
+.panelChartCoral, .panelChartPie {
+  background: #4B5357;
+  height: 600px;
+}
+
+.panel-default {
+    border: none;
+    line-height: 180%;
+}
+
+.panel-default>.panel-heading {
+    background: #4B5357;
+    border-top: 2px solid #313639;
+    border-bottom: 1px solid #313639;
+    color: #fff;
+    font-weight: bold;
+}
+
+.panel-default>.panel-body {
+    background: #4B5357;
+    color: #fff;
+}
+
+.panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.select-area, .select-year {
+    padding-bottom: 15px;
+}
+
+.tab-content {
+    padding-top: 15px;
+}
+
+.theme-bg {
+    background: #3A4144 !important;
+}
+
+
+/*** Bootstrap Overide ***/
+
+.nav-tabs {
+    border-bottom: 1px solid #313639;
+}
+
+.nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.nav-tabs>li>a {
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    line-height: 1.42857;
+    margin-right: 2px;
+}
+
+.nav-tabs>li>a:hover {
+    background-color: #313639;
+    border-color: #464545 !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #4B5357;
+    border-color: #313639 #313639 transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #00bc8c;
+    cursor: default;
+}
+
+.nav-tabs.nav-justified {
+    border-bottom: 0 none;
+    width: 100%;
+}
+
+.nav-tabs.nav-justified>li {
+    float: none;
+}
+
+.nav-tabs.nav-justified>li>a {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.nav-tabs.nav-justified>.dropdown .dropdown-menu {
+    left: auto;
+    top: auto;
+}
+
+@media (min-width: 768px) {
+    .nav-tabs.nav-justified>li {
+        display: table-cell;
+        width: 1%;
+    }
+    .nav-tabs.nav-justified>li>a {
+        margin-bottom: 0;
+    }
+}
+
+.nav-tabs.nav-justified>li>a {
+    border-radius: 4px;
+    margin-right: 0;
+}
+
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus {
+    border: 1px solid #ebebeb;
+}
+
+@media (min-width: 768px) {
+    .nav-tabs.nav-justified>li>a {
+        border-bottom: 1px solid #ebebeb;
+        border-radius: 4px 4px 0 0;
+    }
+    .nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus {
+        border-bottom-color: #222222;
+    }
+}
+
+th {
+    text-align: center;
+}
+
+th, td {
+    border-color: #313639 !important;
+}
+
+.table-hover>tbody>tr:hover {
+    background-color: #383E41;
+}
